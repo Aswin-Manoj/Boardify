@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boardify</title>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <section id="page">
+            <header>
+                <div class="topnav">
+                    <div class="header-top">
+                        <input type="text" id="searchBarInput" placeholder=" Search here..">
+                        <button class="search-btn" id="searchBarButton" type="submit"><i
+                                class="fas fa-search"></i></button>
+                        <!-- <div class="dropdown">
+                            <button class=" search-btn btn btn-secondary dropdown-toggle" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Profile
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Account settings</a></li>
+                            </ul>
+                        </div> -->
+                        <div class="btn btn-outline-secondary btn-profile">Profile</div>
+                    </div>
+
+                    <div class="header-list">
+                        <div class="liked-list">
+                            <input type="checkbox" class="btn-check" id="favouriteListButton" autocomplete="off">
+                            <label class="btn btn-outline-secondary text-danger-emphasis btn-fav"
+                                for="favouriteListButton" id="favouriteListButtonLabal">My Favourites <span></span><i
+                                    class="fa-solid fa-heart fa-xl"></i></label><br>
+                        </div>
+                        <div class="header-text" id="listHeader"></div>
+                        <div class="btn-group" role="group">
+                            <div class="sortByDiff">
+                                <input type="checkbox" class="btn btn-check" id="sortByButton" autocomplete="off">
+                                <label class="btn btn-outline-secondary text-dark" id="sordOrderButtonLabel" for="sortByButton">Sort By
+                                    Difficulty</label><br>
+                            </div>
+                            <div class="sortOrder">
+                                <input type="checkbox" class="btn btn-check" id="sortOrderButton" autocomplete="off">
+                                <label class="btn btn-outline-secondary" for="sortOrderButton"><i
+                                        class="fa-solid fa-sort"></i></label><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <nav class="filters" id="filter-side">
+                <div class="filter-header">
+                    <div class="container">
+                        <div class="head-item">
+                            <h5>Filters</h5>
+                        </div>
+                    </div>
+                    <i class="fa fa-filter fa-2x" aria-hidden="true"></i>
+                </div>
+                <hr>
+                <div class="filter-item by-players">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Players
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="form-check">
+                                    <input class="playersRadio" type="radio" name="playerCount" id="playersFilter0"
+                                        value=0 checked>
+                                    <label class="playersRange" for="playersFilter0">Show all</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="playersRadio" type="radio" name="playerCount" value=2
+                                        id="playersFilter1">
+                                    <label class="playersRange" for="playersFilter1">2</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="playersRadio" type="radio" name="playerCount" value=3
+                                        id="playersFilter2">
+                                    <label class="playersRange" for="playersFilter2">3</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="playersRadio" type="radio" name="playerCount" value=4
+                                        id="playersFilter3">
+                                    <label class="playersRange" for="playersFilter3">4</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="playersRadio" type="radio" name="playerCount" id="playersFilter4">
+                                    <label class="playersRange" for="playersFilter3">Custom player</label>
+                                    <div class="input-group mb-3">
+                                        
+                                        <input type="text" class="form-control" id="playersInput"
+                                            placeholder="Enter player count" aria-label="Custom player count"
+                                            aria-describedby="applyButton">
+     
+                                        <button type="button" id="applyButton"><i
+                                                class="fa-solid fa-check"></i></button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <p style='font-size:16px;' id="playersHint">Players &#128100;</p>
+                </div>
+                <hr class="filter-hr">
+                <div class="filter-item by-rating">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="true">
+                            Ratings
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="form-check">
+                                    <input class="rateRadio" type="radio" name="filterRatings" id="filterRatings0"
+                                        value=0 checked>
+                                    <label class="rateLevel" for="filterRatings0">All Ratings</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="rateRadio" type="radio" name="filterRatings" value=1
+                                        id="filterRatings1">
+                                    <label class="rateLevel" for="filterRatings1">★☆☆☆☆+</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="rateRadio" type="radio" name="filterRatings" value=2
+                                        id="filterRatings2">
+                                    <label class="rateLevel" for="filterRatings2">★★☆☆☆+</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="rateRadio" type="radio" name="filterRatings" value=3
+                                        id="filterRatings3">
+                                    <label class="rateLevel" for="filterRatings3">★★★☆☆+</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="rateRadio" type="radio" name="filterRatings" value=4
+                                        id="filterRatings4">
+                                    <label class="rateLevel" for="filterRatings4">★★★★☆+</label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <p style='font-size:16px;' id="rateHint">All Ratings &#11088;</p>
+                </div>
+                <hr class="filter-hr">
+                <div class="filter-item by-genres">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Genres
+                        </button>
+                        <ul class="dropdown-menu" id="genreFilters">
+                            <li>
+                                <div class="form-check">
+                                    <input class="genreCheckbox" type="checkbox" value="Strategy" id="filterStrategy">
+                                    <label class="genreName" for="filterStrategy">Strategy</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="genreCheckbox" type="checkbox" value="Eurogames" id="filterEurogames">
+                                    <label class="genreName" for="filterEurogames">Eurogames</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="genreCheckbox" type="checkbox" value="Co-op" id="filterCoop">
+                                    <label class="genreName" for="filterCoop">Co-op</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="genreCheckbox" type="checkbox" value="Party Games" id="filterParty">
+                                    <label class="genreName" for="filterParty">Party Games</label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <p style='font-size:16px;' id="genreHint">All Genres</p>
+                </div>
+                <hr class="filter-hr">
+                <div class="filter-item by-playtime">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Playtime
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="form-check">
+                                    <input class="durationRadio" type="radio" name="durationSelection" value=0
+                                        id="durationFilter0" checked>
+                                    <label class="durationRange" for="durationFilter0">Show all</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="durationRadio" type="radio" name="durationSelection" value=15
+                                        id="durationFilter1">
+                                    <label class="durationRange" for="durationFilter1">~15min</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="durationRadio" type="radio" name="durationSelection" value=30
+                                        id="durationFilter2">
+                                    <label class="durationRange" for="durationFilter2">~30min</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="durationRadio" type="radio" name="durationSelection" value=60
+                                        id="durationFilter3">
+                                    <label class="durationRange" for="durationFilter3">~60min</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="durationRadio" type="radio" name="durationSelection" value=61
+                                        id="durationFilter4">
+                                    <label class="durationRange" for="durationFilter4">60+min</label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <p style='font-size:16px;' id="durationHint"> 5+ &#128337;</p>
+                </div>
+                <hr class="filter-hr">
+                <div class="filter-item by-age">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Age
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="form-check">
+                                    <input class="ageRadio" type="radio" name="ageRating" id="ageFilter0" value=0
+                                        checked>
+                                    <label class="ageRange" for="ageFilter0">All Ages</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="ageRadio" type="radio" name="ageRating" value=6 id="ageFilter1">
+                                    <label class="ageRange" for="ageFilter1">6 and below</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="ageRadio" type="radio" name="ageRating" value=12 id="ageFilter2">
+                                    <label class="ageRange" for="ageFilter2">12 and below</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="ageRadio" type="radio" name="ageRating" value=17 id="ageFilter3">
+                                    <label class="ageRange" for="ageFilter3">17 and below</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="ageRadio" type="radio" name="ageRating" value=18 id="ageFilter4">
+                                    <label class="ageRange" for="ageFilter4">18 and above</label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <p style='font-size:16px;' id="ageHint">All Ages</p>
+                </div>
+                <!-- <hr>
+                <div class="filter-item by-difficulty">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Age
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="form-check">
+                                    <input class="diffRadio" type="radio" name="diffRating" id="diffFilter0" value=0 checked>
+                                    <label class="diffSelection" for="diffFilter0">Show all</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="diffRadio" type="radio" name="diffRating" value=4 id="diffFilter1">
+                                    <label class="diffSelection" for="diffFilter1">Below 5</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="diffRadio" type="radio" name="diffRating" value=5 id="diffFilter2">
+                                    <label class="diffSelection" for="diffFilter2">5 and above</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="form-check">
+                                    <input class="diffRadio" type="radio" name="diffRating" value=8 id="diffFilter3">
+                                    <label class="diffSelection" for="diffFilter3">8 and above</label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <p style='font-size:16px;' id="ageHint">All Ages</p>
+                </div> -->
+                <hr>
+                <div class="filter-item btns-filter">
+                    <button class="btn btn-secondary reset-btn" id="resetButton">Clear All</button>
+                </div>
+            </nav>
+            <main id="main">
+                <!-- <div class="d-flex flex-column">
+                    <div class="p-4 card" style="width: 500px; height: 30px;">
+                        <div class="d-flex flex-row">
+                            Text area
+                            <div class="p-2">Flex item 3</div>
+                        </div>
+                    </div>
+                    <div class="p-4 card">Board Game</div>
+                    <div class="p-4 card">Board Game</div>
+                    <div class="p-4 card">Board Game</div>
+                    <div class="p-4 card">Board Game</div>
+                    <div class="p-4 card">Board Game</div>
+                </div> -->
+                <!-- Modal -->
+
+            </main>
+        </section>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/filter.js"></script>
+
+</body>
+
+</html>
